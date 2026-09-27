@@ -9,6 +9,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/Shubham19032004/minicache/pkg/commands"
 )
 
 var Port = 6379
@@ -65,11 +67,7 @@ func handleConnection(conn net.Conn) {
 		}
 		command := strings.TrimSpace(message)
 		fmt.Println("received:", command)
-
-		if _, err := conn.Write([]byte(command + "\n")); err != nil {
-			log.Printf("Write error: %v", err)
-			return
-		}
+		commands.ParseCommands(command,conn)
 	}
 
 }

@@ -1,5 +1,6 @@
 package commands
 
-var(
-	PING="PING"
+var (
+	PING = "PING"
+	
 )
